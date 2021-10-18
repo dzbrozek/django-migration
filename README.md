@@ -56,18 +56,12 @@ Oceniane będą:
 Przygotuj skrypt migrujący rekordy z modeli Subscriber i SubscriberSMS do User przy założeniach:
 * dla modelu Subscriber
   * jeśli istnieje User z polem email takim samym jak w Subscriber - pomiń subskrybenta i nie twórz nowego użytkownika
-    * jeśli nie istnieje ww. User
-      * jeśli istnieje Client z polem email takim jak Subscriber.email i nie istnieje User z polem phone takim jak Client.phone i polem email różnym od Client.email stwórz użytkownika na podstawie modelu Client
-      * jeśli istnieje Client z polem email takim jak Subscriber.email i istnieje User z polem phone takim jak Client.phone i polem email różnym od Client.email zapisz id i email subskrybenta do pliku subscriber_conflicts.csv
-      * jeśli nie istnieje Client z polem email takim jak Subscriber.email, stwórz użytkownika z pustym polem phone
-    * dla modelu SubscriberSMS
-      * kroki analogiczne do Subscriber, tylko z odwróconą logiką pól email i phone, i osobnym plikiem csv na konflikty
-    * dla modelu SubscriberSMS
-      * jeśli istnieje User z polem phone takim samym jak w SubscriberSMS pomiń subskrybenta i nie twórz nowego użytkownika
-      * jeśli nie istnieje ww. User
-        * jeśli istnieje Client z polem email takim jak Subscriber.email i nie istnieje User z polem phone takim jak Client.phone i polem email różnym od Client.email stwórz użytkownika na podstawie modelu Client
-        * jeśli istnieje Client z polem email takim jak Subscriber.email i istnieje User z polem phone takim jak Client.phone i polem email różnym od Client.email zapisz id i email subskrybenta do pliku subscriber_conflicts.csv
-        * jeśli nie istnieje Client z polem email takim jak Subscriber.email, stwórz użytkownika z pustym polem phone
+  * jeśli nie istnieje ww. User
+    * jeśli istnieje Client z polem email takim jak Subscriber.email i nie istnieje User z polem phone takim jak Client.phone i polem email różnym od Client.email stwórz użytkownika na podstawie modelu Client
+    * jeśli istnieje Client z polem email takim jak Subscriber.email i istnieje User z polem phone takim jak Client.phone i polem email różnym od Client.email zapisz id i email subskrybenta do pliku subscriber_conflicts.csv
+    * jeśli nie istnieje Client z polem email takim jak Subscriber.email, stwórz użytkownika z pustym polem phone
+* dla modelu SubscriberSMS
+   * kroki analogiczne do Subscriber, tylko z odwróconą logiką pól email i phone, i osobnym plikiem csv na konflikty
 
 Nie twórz użytkowników na podstawie klientów z nieunikalnymi numerami telefonów - informację o takich klientach również zapisz do pliku .csv.
 Zadbaj o przeniesienie pola gdpr_consent do nowych użytkowników.
